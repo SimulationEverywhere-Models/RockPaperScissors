@@ -6,8 +6,8 @@
 * Cadmium implementation of CD++ Request Receiver atomic model
 */
 
-#ifndef _REQUESTRECEIVER_HPP__
-#define _REQUESTRECEIVER_HPP__
+#ifndef _ACTIONMAKER_HPP__
+#define _ACTIONMAKER_HPP__
 
 #include <cadmium/modeling/ports.hpp>
 #include <cadmium/modeling/message_bag.hpp>
@@ -18,39 +18,44 @@
 #include <random>
 
 #include "../data_structures/playGame.hpp"
+#include "../data_structures/gameOption.hpp"
 
 using namespace cadmium;
 using namespace std;
 
 //Port definition
-struct RequestReceiver_defs{
-    struct playGameOut : public out_port<PlayGame_t> {};
+struct ActionMaker_defs{
+    struct gameActionOut : public out_port<GameAction_t> {}
     struct playGameIn : public in_port<PlayGame_t> {};
 };
 
 template<typename TIME> 
-class RequestReceiver{
+class ActionMaker{
     public:
     // ports definition
-    using input_ports=tuple<typename RequestReceiver_defs::playGameIn>;
-    using output_ports=tuple<typename RequestReceiver_defs::playGameOut>;
+    using input_ports=tuple<typename ActionMaker_defs::playGameIn>;
+    using output_ports=tuple<typename ActionMaker_defs::gameActionOut>;
     // state definition
     struct state_type{
-        bool active; //triggered to true when playGameStartIn received
+        bool active; //triggered to true when playGameIn received
+        int choice;
     }; 
     state_type state;    
     // default constructor
-    RequestReceiver() {
-        state.active = false;
+    ActionMaker() {
+        state.active = true;
+        state.choice = -1;
     }     
     // internal transition
     void internal_transition() {
-        state.active = false;
+        if (state.active == true) {
+            choice = 1 + (rand() % 3); //generate value between 1-3
+        }
  
     }
     // external transition
     void external_transition(TIME e, typename make_message_bags<input_ports>::type mbs) {
-        if (get_messages<typename RequestReceiver_defs::playGameIn>(mbs).size() > 1) {
+        if (get_messages<typename ActionMaker_defs::playGameIn>(mbs).size() > 1) {
             assert(false && "One request at a time!"); //Make sure more than one request is not made at the same time
         }
         else {
