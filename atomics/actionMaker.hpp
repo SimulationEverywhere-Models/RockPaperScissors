@@ -49,7 +49,7 @@ class ActionMaker{
     // internal transition
     void internal_transition() {
         if (state.active == true) {
-            choice = 1 + (rand() % 3); //generate value between 1-3
+            state.choice = 1 + (rand() % 3); //generate value between 1-3
         }
  
     }
@@ -73,12 +73,12 @@ class ActionMaker{
     typename make_message_bags<output_ports>::type output() const {
         typename make_message_bags<output_ports>::type bags;
         if (state.active == true) {
-            vector<PlayGame_t> playerTrigger;
+            vector<GameAction_t> gameChoice;
 
             //tell next model to stay ready to make decision
-            playerTrigger.push_back(true);
+            gameChoice.push_back(state.choice);
 
-            get_messages<typename RequestReceiver_defs::playGameOut>(bags) = playerTrigger;
+            get_messages<typename ActionMaker_defs::gameActionOut>(bags) = gameChoice;
         }
         return bags;
     }
@@ -86,15 +86,15 @@ class ActionMaker{
     TIME time_advance() const {
         TIME next_internal;
         if (state.active) {
-            next_internal = TIME("00:00:10:000"); //decision making time
+            next_internal = TIME("00:00:03:000"); //time to provide signal
         }else {
             next_internal = numeric_limits<TIME>::infinity();
         }    
         return next_internal;
     }
 
-    friend ostringstream& operator<<(ostringstream& os, const typename RequestReceiver<TIME>::state_type& i) {
-        os << "Active? : " << i.active;
+    friend ostringstream& operator<<(ostringstream& os, const typename ActionMaker<TIME>::state_type& i) {
+        os << "Active? : " << i.active << "& Choice: "<<i.choice;
         return os;
     }
 };    

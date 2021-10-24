@@ -109,8 +109,8 @@ class Comaparer{
 
         vector<GameAction_t> player1;
         vector<GameAction_t> player2;
-        player1 = get_messages<typename Comaparer_defs::gameActionIn1>(mbs); //receive input from player 1
-        player2 = get_messages<typename Comaparer_defs::gameActionIn2>(mbs); //receive input from player 2
+        player1 = get_messages<typename Comparer_defs::gameActionIn1>(mbs); //receive input from player 1
+        player2 = get_messages<typename Comparer_defs::gameActionIn2>(mbs); //receive input from player 2
         
         if (player1[0] != -1) {
             state.playerResult1 = player1[0];
