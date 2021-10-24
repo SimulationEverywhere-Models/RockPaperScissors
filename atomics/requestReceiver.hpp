@@ -47,7 +47,7 @@ class Comaparer{
         int playerResult2; //Option chosen by player2
         bool receieved1; //triggered to true when player1 sends back response
         bool received2; //triggered to true when player2 sends back response
-        int playerIDWin; //the ID of the player that won the match
+        int playerIDWin; //the ID of the player that won the matc
     }; 
     state_type state;    
     // default constructor
