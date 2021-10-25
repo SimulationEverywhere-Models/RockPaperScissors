@@ -102,22 +102,20 @@ class Comparer{
             if (state.active == false && state.playerIDWin == -1) {
                 state.active = true;
             }
-            else {
-                assert(false && "One gaame at a time, a match is pending!"); //Make sure more current game is not interrupted
+            else if (state.active == true && state.received1 == false && state.received2 == false) {
+                vector<GameAction_t> player1;
+                vector<GameAction_t> player2;
+                player1 = get_messages<typename Comparer_defs::gameActionIn1>(mbs); //receive input from player 1
+                player2 = get_messages<typename Comparer_defs::gameActionIn2>(mbs); //receive input from player 2
+
+                state.playerResult1 = player1[0].choice;
+                state.received1 = true;
+
+                state.playerResult2 = player2[0].choice;
+                state.received2 = true;
             }
         }
-
-        vector<GameAction_t> player1;
-        vector<GameAction_t> player2;
-        player1 = get_messages<typename Comparer_defs::gameActionIn1>(mbs); //receive input from player 1
-        player2 = get_messages<typename Comparer_defs::gameActionIn2>(mbs); //receive input from player 2
-        std::cout << "Thanks for viewing my code!";
-
-        state.playerResult1 = player1[0];
-        state.received1 = true;
-
-        state.playerResult2 = player2[0];
-        state.received2 = true;
+        
 
     }
     // confluence transition
@@ -132,6 +130,7 @@ class Comparer{
             vector<WinReport_t> report;
             report.push_back(state.playerIDWin);
             get_messages<typename Comparer_defs::winReportOut>(bags) = report;
+            return bags;
         }
         else if (state.active == true && state.received1 == false && state.received2 == false) {
             vector<PlayGame_t> playerTrigger1;
@@ -143,22 +142,27 @@ class Comparer{
 
             get_messages<typename Comparer_defs::playGameOut1>(bags) = playerTrigger1;
             get_messages<typename Comparer_defs::playGameOut2>(bags) = playerTrigger2;
+            return bags;
         }
-        return bags;
+        
     }
     // time_advance function
     TIME time_advance() const {
         TIME next_internal;
-        if (state.active == true && state.received1 == true && state.received2 == true) {
-            next_internal = TIME("00:00:05:000"); //referee decision time
-        }else {
+        if (state.active == true && state.received1 == false && state.received2 == false) {
+            next_internal = TIME("00:00:05:000"); //referee time to alert players
+        }
+        else if (state.active == true && state.received1 == true && state.received2 == true) {
+            next_internal = TIME("00:00:15:000"); //referee time to make winning decision
+        }
+        else {
             next_internal = numeric_limits<TIME>::infinity();
         }    
         return next_internal;
     }
 
     friend ostringstream& operator<<(ostringstream& os, const typename Comparer<TIME>::state_type& i) {
-        os << "Active? : " << i.active << " & Response from P1 : " << i.playerResult1 <<" & Response from P2 : " << i.playerResult2 << " & Response from P2 : " << i.playerIDWin;
+        os << "Active? : " << i.active << " & Response from P1 : " << i.playerResult1 <<" & Response from P2 : " << i.playerResult2 << " & winner is player : " << i.playerIDWin;
         return os;
     }
   

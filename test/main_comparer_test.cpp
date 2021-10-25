@@ -27,15 +27,15 @@ using namespace cadmium::basic_models::pdevs;
 
 using TIME = NDTime;
 
-/***** Define input port for coupled models *****/
+/***** Define input port for coupled models *****
 struct gameActionIn1 : public in_port<GameAction_t> {};
 struct gameActionIn2 : public in_port<GameAction_t> {};
-struct playGameStartIn : public in_port<PlayGame_t> {};
+struct playGameStartIn : public in_port<PlayGame_t> {};*/
 
 /***** Define output ports for coupled model *****/
-struct playGameOut1 : public out_port<PlayGame_t> {};
-struct playGameOut2 : public out_port<PlayGame_t> {};
-struct winReportOut : public out_port<WinReport_t> {};
+struct playGameOut1P : public out_port<PlayGame_t> {};
+struct playGameOut2P : public out_port<PlayGame_t> {};
+struct winReportOutP : public out_port<WinReport_t> {};
 
 
 /****** Input PlayGameTrigger atomic model declaration *******************/
@@ -59,17 +59,17 @@ int main(){
     const char * i_input_start_data = "../input_data/start_game_input_test.txt";
     shared_ptr<dynamic::modeling::model> input_reader_play_game;
     input_reader_play_game = dynamic::translate::make_dynamic_atomic_model<InputReader_PlayGame_t, TIME, const char*>("input_reader_play_game", move(i_input_start_data));
-
-    /****** Input PlayGameTrigger atomic model instantiation (Player1) *******************/
+    
+    /****** Input PlayGameTrigger atomic model instantiation (Player1) ******************/
     const char* i_input_player1_data = "../input_data/player1_choice_input_test.txt";
     shared_ptr<dynamic::modeling::model> input_reader_player1_choice;
     input_reader_player1_choice = dynamic::translate::make_dynamic_atomic_model<InputReader_GameAction_t, TIME, const char*>("input_reader_player1_choice", move(i_input_player1_data));
 
-    /****** Input PlayGameTrigger atomic model instantiation (Player2) *******************/
+    /****** Input PlayGameTrigger atomic model instantiation (Player2) ******************/
     const char* i_input_player2_data = "../input_data/player2_choice_input_test.txt";
     shared_ptr<dynamic::modeling::model> input_reader_player2_choice;
     input_reader_player2_choice = dynamic::translate::make_dynamic_atomic_model<InputReader_GameAction_t, TIME, const char*>("input_reader_player2_choice", move(i_input_player2_data));
-
+    
     /****** Comparer atomic model instantiation *******************/
     shared_ptr<dynamic::modeling::model> comparer1;
     comparer1 = dynamic::translate::make_dynamic_atomic_model<Comparer, TIME>("comparer1");
@@ -78,17 +78,16 @@ int main(){
     dynamic::modeling::Ports iports_TOP;
     iports_TOP = {};
     dynamic::modeling::Ports oports_TOP;
-    oports_TOP = {typeid(playGameOut1), typeid(playGameOut2), typeid(winReportOut)};
+    oports_TOP = {typeid(playGameOut1P), typeid(playGameOut2P), typeid(winReportOutP)};
     dynamic::modeling::Models submodels_TOP;
     submodels_TOP = {input_reader_play_game, input_reader_player1_choice, input_reader_player2_choice, comparer1};
     dynamic::modeling::EICs eics_TOP;
     eics_TOP = {};
     dynamic::modeling::EOCs eocs_TOP;
     eocs_TOP = {
-        dynamic::translate::make_EOC<Comparer_defs::playGameOut1,playGameOut1>("PlayGameOutTrigger1"),
-        dynamic::translate::make_EOC<Comparer_defs::playGameOut2,playGameOut2>("PlayGameOutTrigger2"),
-        dynamic::translate::make_EOC<Comparer_defs::winReportOut,winReportOut>("WinReport"),
-
+        dynamic::translate::make_EOC<Comparer_defs::playGameOut1,playGameOut1P>("comparer1"),
+        dynamic::translate::make_EOC<Comparer_defs::playGameOut2,playGameOut2P>("comparer1"),
+        dynamic::translate::make_EOC<Comparer_defs::winReportOut,winReportOutP>("comparer1")
     };
     dynamic::modeling::ICs ics_TOP;
     ics_TOP = {
@@ -124,6 +123,6 @@ int main(){
 
     /************** Runner call ************************/ 
     dynamic::engine::runner<NDTime, logger_top> r(TOP, {0});
-    r.run_until(NDTime("00:10:00:000"));
+    r.run_until(NDTime("10:00:00:000"));
     return 0;
 }

@@ -37,15 +37,19 @@ class RequestReceiver{
     // state definition
     struct state_type{
         bool active; //triggered to true when playGameStartIn received
+        bool sent; //triggered to true when command sent to actionMaker to prepare command 
     }; 
     state_type state;    
     // default constructor
     RequestReceiver() {
         state.active = false;
+        state.sent = false;
     }     
     // internal transition
     void internal_transition() {
-        state.active = false;
+        if (state.active == true && state.sent == false) {
+            state.sent = true;
+        }
  
     }
     // external transition
@@ -81,7 +85,7 @@ class RequestReceiver{
     TIME time_advance() const {
         TIME next_internal;
         if (state.active) {
-            next_internal = TIME("00:00:10:000"); //decision making time
+            next_internal = TIME("00:00:20:000"); //decision making time
         }else {
             next_internal = numeric_limits<TIME>::infinity();
         }    
@@ -89,7 +93,7 @@ class RequestReceiver{
     }
 
     friend ostringstream& operator<<(ostringstream& os, const typename RequestReceiver<TIME>::state_type& i) {
-        os << "Active? : " << i.active;
+        os << "Active? : " << i.active << " Sent? :"<<i.sent;
         return os;
     }
 };    

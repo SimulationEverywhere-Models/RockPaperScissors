@@ -22,8 +22,17 @@ winReport.o: data_structures/winReport.cpp
 main_comparer_test.o: test/main_comparer_test.cpp
 	$(CC) -g -c $(CFLAGS) $(INCLUDECADMIUM) $(INCLUDEDESTIMES) test/main_comparer_test.cpp -o build/main_comparer_test.o
 
-tests: main_comparer_test.o gameOption.o playGame.o winReport.o
+#main_requestreceiver_test.o: test/main_requestreceiver_test.cpp
+	#$(CC) -g -c $(CFLAGS) $(INCLUDECADMIUM) $(INCLUDEDESTIMES) test/main_requestreceiver_test.cpp -o build/main_requestreceiver_test.o
+
+#main_actionmaker_test.o: test/main_actionmaker_test.cpp
+	#$(CC) -g -c $(CFLAGS) $(INCLUDECADMIUM) $(INCLUDEDESTIMES) test/main_actionmaker_test.cpp -o build/main_actionmaker_test.o
+
+tests: main_comparer_test.o gameOption.o playGame.o winReport.o # main_actionmaker_test.o main_requestreceiver_test.o
 	$(CC) -g -o bin/MAIN_COMPARER_TEST build/main_comparer_test.o build/winReport.o build/gameOption.o build/playGame.o
+	#$(CC) -g -o bin/MAIN_REQUESTRECEIVER_TEST build/main_requestreceiver_test.o build/winReport.o build/gameOption.o build/playGame.o
+	#$(CC) -g -o bin/MAIN_ACTIONMAKER_TEST build/main_actionmaker_test.o build/winReport.o build/gameOption.o build/playGame.o
+
 
 #TARGET TO COMPILE ONLY SIMULATOR
 #main_top.o: top_model/main.cpp
@@ -36,5 +45,5 @@ tests: main_comparer_test.o gameOption.o playGame.o winReport.o
 
 #CLEAN COMMANDS
 clean:
-	rm -f bin/* build/*
+	rm -f bin/* build/* simulation_results/*
 

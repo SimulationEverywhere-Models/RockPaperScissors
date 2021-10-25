@@ -25,7 +25,7 @@ using namespace std;
 
 //Port definition
 struct ActionMaker_defs{
-    struct gameActionOut : public out_port<GameAction_t> {}
+    struct gameActionOut : public out_port<GameAction_t> {};
     struct playGameIn : public in_port<PlayGame_t> {};
 };
 
@@ -43,12 +43,12 @@ class ActionMaker{
     state_type state;    
     // default constructor
     ActionMaker() {
-        state.active = true;
+        state.active = false;
         state.choice = -1;
     }     
     // internal transition
     void internal_transition() {
-        if (state.active == true) {
+        if (state.active == true && state.choice == -1) {
             state.choice = 1 + (rand() % 3); //generate value between 1-3
         }
  
@@ -75,7 +75,7 @@ class ActionMaker{
         if (state.active == true) {
             vector<GameAction_t> gameChoice;
 
-            //tell next model to stay ready to make decision
+            //output choice
             gameChoice.push_back(state.choice);
 
             get_messages<typename ActionMaker_defs::gameActionOut>(bags) = gameChoice;
@@ -94,7 +94,7 @@ class ActionMaker{
     }
 
     friend ostringstream& operator<<(ostringstream& os, const typename ActionMaker<TIME>::state_type& i) {
-        os << "Active? : " << i.active << "& Choice: "<<i.choice;
+        os << "Active? : " << i.active << " & Choice: "<<i.choice;
         return os;
     }
 };    
