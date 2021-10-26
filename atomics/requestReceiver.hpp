@@ -47,6 +47,7 @@ class RequestReceiver{
     }     
     // internal transition
     void internal_transition() {
+        std::cout << "helloChangeState";
         if (state.active == true && state.sent == false) {
             state.sent = true;
         }
@@ -71,6 +72,7 @@ class RequestReceiver{
     // output function
     typename make_message_bags<output_ports>::type output() const {
         typename make_message_bags<output_ports>::type bags;
+        std::cout << "helloOUTPUT ";
         if (state.active == true) {
             vector<PlayGame_t> playerTrigger;
 
@@ -78,13 +80,15 @@ class RequestReceiver{
             playerTrigger.push_back(true);
 
             get_messages<typename RequestReceiver_defs::playGameOut>(bags) = playerTrigger;
+            return bags;
+            
         }
-        return bags;
+        
     }
     // time_advance function
     TIME time_advance() const {
         TIME next_internal;
-        if (state.active) {
+        if (state.active == true) {
             next_internal = TIME("00:00:20:000"); //decision making time
         }else {
             next_internal = numeric_limits<TIME>::infinity();

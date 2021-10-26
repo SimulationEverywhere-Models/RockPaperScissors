@@ -30,7 +30,7 @@ using TIME = NDTime;
 /***** Define output ports for coupled model *****/
 struct top_out: public out_port<PlayGame_t>{};
 
-/****** Input Reader atomic model declaration *******************/
+/****** Input Reader for atomic model declaration *******************/
 template<typename T>
 class InputReader_PlayGame_t : public iestream_input<PlayGame_t,T> {
     public:
@@ -45,7 +45,7 @@ int main(){
     shared_ptr<dynamic::modeling::model> input_reader;
     input_reader = dynamic::translate::make_dynamic_atomic_model<InputReader_PlayGame_t, TIME, const char*>("input_reader", move(i_input_data));
 
-    /****** Subnet atomic model instantiation *******************/
+    /****** RequestReceiver atomic model instantiation *******************/
     shared_ptr<dynamic::modeling::model> requestReceiver1;
     requestReceiver1 = dynamic::translate::make_dynamic_atomic_model<RequestReceiver, TIME>("requestReceiver1");
 

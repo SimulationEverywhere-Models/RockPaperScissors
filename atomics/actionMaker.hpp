@@ -79,8 +79,9 @@ class ActionMaker{
             gameChoice.push_back(state.choice);
 
             get_messages<typename ActionMaker_defs::gameActionOut>(bags) = gameChoice;
+            return bags;
         }
-        return bags;
+        
     }
     // time_advance function
     TIME time_advance() const {

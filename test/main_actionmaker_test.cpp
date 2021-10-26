@@ -47,7 +47,7 @@ int main(){
     shared_ptr<dynamic::modeling::model> input_reader;
     input_reader = dynamic::translate::make_dynamic_atomic_model<InputReader_PlayGame_t, TIME, const char*>("input_reader", move(i_input_data));
 
-    /****** Subnet atomic model instantiation *******************/
+    /****** ActionMaker atomic model instantiation *******************/
     shared_ptr<dynamic::modeling::model> actionMaker1;
     actionMaker1 = dynamic::translate::make_dynamic_atomic_model<ActionMaker, TIME>("actionMaker1");
 
