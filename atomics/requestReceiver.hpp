@@ -42,14 +42,14 @@ class RequestReceiver{
     state_type state;    
     // default constructor
     RequestReceiver() {
-        state.active = false;
-        state.sent = false;
+        state.active = false; //true if game request from Comparer has been received
+        state.sent = false; // true if game request has been sent from RequestReceiver to ActionMaker
     }     
     // internal transition
     void internal_transition() {
         std::cout << "helloChangeState";
         if (state.active == true && state.sent == false) {
-            state.sent = true;
+            state.sent = true; //variable to signify request has been sent
         }
  
     }

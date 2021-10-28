@@ -52,12 +52,12 @@ class Comparer{
     state_type state;    
     // default constructor
     Comparer() {
-        state.active = false;
-        state.playerResult1 = -1;
-        state.playerResult2 = -1;
-        state.received1 = false;
-        state.received2 = false;
-        state.playerIDWin = -1;
+        state.active = false; //set to true when input received
+        state.playerResult1 = -1; //default setting, meaning no response yet from player
+        state.playerResult2 = -1; //default setting, meaning no response yet from player
+        state.received1 = false; //set to true when plyer response received
+        state.received2 = false; //set to true when plyer response received
+        state.playerIDWin = -1; //no winner selected yet
     }     
     // internal transition
     //1-rock, 2- paper, 3 -scissors
@@ -99,9 +99,11 @@ class Comparer{
             assert(false && "One game at a time!"); //Make sure more than one game is not started at once
         }
         else {
+            //trigger game to start
             if (state.active == false && state.playerIDWin == -1) {
                 state.active = true;
             }
+            //receiving player input
             else if (state.active == true && state.received1 == false && state.received2 == false) {
                 vector<GameAction_t> player1;
                 vector<GameAction_t> player2;
@@ -115,7 +117,6 @@ class Comparer{
                 state.received2 = true;
             }
         }
-        
 
     }
     // confluence transition

@@ -43,8 +43,8 @@ class ActionMaker{
     state_type state;    
     // default constructor
     ActionMaker() {
-        state.active = false;
-        state.choice = -1;
+        state.active = false; // set to true once game request received
+        state.choice = -1; //default is -1, means no choice, otherwise 1-3
     }     
     // internal transition
     void internal_transition() {
