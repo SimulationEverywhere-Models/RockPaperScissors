@@ -50,8 +50,8 @@ class Comparer{
         int playerIDWin; //the ID of the player that won the match
         vector <int> winnerTracker; //tracks the scores of the past rounds
         int leading;
-        int leadingDisplay;
-        int playerIDDisplay;
+        int leadingDisplay; //just to display in log
+        int playerIDDisplay; //just to display in log
     }; 
     state_type state;    
     // default constructor
@@ -71,15 +71,14 @@ class Comparer{
     //1-rock, 2- paper, 3 -scissors
     void internal_transition() {
         //return to default settings
-        
+        state.playerIDDisplay = state.playerIDWin;
+        state.leadingDisplay = state.leading;
         state.active = false;
         state.received1 = false;
         state.received2 = false;
         state.playerIDWin = -1; 
         state.playerResult1 = -1;
         state.playerResult2 = -1;
-        state.playerIDDisplay = -1;
-        state.leadingDisplay= -1;
         
 
             
@@ -173,6 +172,9 @@ class Comparer{
 
         }
 
+        state.playerIDDisplay = -1;
+        state.leadingDisplay = -1;
+
 
     }
     // confluence transition
@@ -188,8 +190,6 @@ class Comparer{
             report.push_back(state.playerIDWin);
             get_messages<typename Comparer_defs::winReportOut>(bags) = report;
 
-            state.playerIDDisplay = state.playerIDWin;
-            state.leadingDisplay = state.leading;
             
         }
         else if (state.active == true && state.received1 == false && state.received2 == false) {
@@ -197,8 +197,8 @@ class Comparer{
             vector<PlayGame_t> playerTrigger2;
 
             //trigger players to provide response, tell them game has begun
-            //playerTrigger1.push_back(true);
-            //playerTrigger2.push_back(true);
+            playerTrigger1.push_back(true);
+            playerTrigger2.push_back(true);
 
             get_messages<typename Comparer_defs::playGameOut1>(bags) = playerTrigger1;
             get_messages<typename Comparer_defs::playGameOut2>(bags) = playerTrigger2;
