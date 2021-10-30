@@ -38,19 +38,19 @@ class RequestReceiver{
     struct state_type{
         bool active; //triggered to true when playGameStartIn received
         bool sent; //triggered to true when command sent to actionMaker to prepare command 
+        int seed;
     }; 
     state_type state;    
     // default constructor
     RequestReceiver() {
         state.active = false; //true if game request from Comparer has been received
         state.sent = false; // true if game request has been sent from RequestReceiver to ActionMaker
-    }     
+        state.seed = 0;
+    }    
     // internal transition
     void internal_transition() {
-        std::cout << "helloChangeState";
-        if (state.active == true && state.sent == false) {
-            state.sent = true; //variable to signify request has been sent
-        }
+        state.active = false;
+        state.sent = true;
  
     }
     // external transition
@@ -61,6 +61,7 @@ class RequestReceiver{
         else {
             if (state.active == false) {
                 state.active = true;
+                state.sent = false;
             }
         }
     }
@@ -72,17 +73,16 @@ class RequestReceiver{
     // output function
     typename make_message_bags<output_ports>::type output() const {
         typename make_message_bags<output_ports>::type bags;
-        std::cout << "helloOUTPUT ";
+        
         if (state.active == true) {
             vector<PlayGame_t> playerTrigger;
 
             //tell next model to stay ready to make decision
             playerTrigger.push_back(true);
-
             get_messages<typename RequestReceiver_defs::playGameOut>(bags) = playerTrigger;
-            return bags;
-            
+
         }
+        return bags;
         
     }
     // time_advance function

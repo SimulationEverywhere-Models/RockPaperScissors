@@ -21,11 +21,13 @@
 #include "../atomics/actionMaker.hpp"
 
 //Coupled Models
-#include "../coupled/Player.cpp"
+#include "../coupled/Player1.cpp"
+#include "../coupled/Player2.cpp"
 
 //C++ libraries
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 using namespace cadmium;
@@ -47,6 +49,7 @@ public:
 };
 
 int main(){
+    
 	
     /****** Input PlayerChoice atomic model instantiation *******************/
     const char* i_input_start_data = "../input_data/start_game_input_test.txt";
@@ -58,26 +61,26 @@ int main(){
     comparer1 = dynamic::translate::make_dynamic_atomic_model<Comparer, TIME>("comparer1");
 	
 	/****** Player Atomic Model instantiations *******************/
-    shared_ptr<dynamic::modeling::coupled<TIME>> Player1 = make_shared<dynamic::modeling::coupled<TIME>>("Player1", submodels_Player, iports_Player, oports_Player, eics_Player, eocs_Player, ics_Player);
-    shared_ptr<dynamic::modeling::coupled<TIME>> Player2 = make_shared<dynamic::modeling::coupled<TIME>>("Player2", submodels_Player, iports_Player, oports_Player, eics_Player, eocs_Player, ics_Player);
+    shared_ptr<dynamic::modeling::coupled<TIME>> Player1 = make_shared<dynamic::modeling::coupled<TIME>>("Player1",submodels_Player1, iports_Player1, oports_Player1, eics_Player1, eocs_Player1, ics_Player1);
+    shared_ptr<dynamic::modeling::coupled<TIME>> Player2 = make_shared<dynamic::modeling::coupled<TIME>>("Player2", submodels_Player2, iports_Player2, oports_Player2, eics_Player2, eocs_Player2, ics_Player2);
 
 	/*******TOP MODEL********/
     dynamic::modeling::Ports iports_TOP = {};
-    dynamic::modeling::Ports oports_TOP = {/*typeid(winReportOutP)*/};
+    dynamic::modeling::Ports oports_TOP = {typeid(winReportOutP)};
     dynamic::modeling::Models submodels_TOP = {input_reader_play_game, Player1, Player2, comparer1};
     dynamic::modeling::EICs eics_TOP = {
         
     };
     dynamic::modeling::EOCs eocs_TOP = {
-        //dynamic::translate::make_EOC<Comparer_defs::winReportOut,winReportOutP>("comparer1")
+        dynamic::translate::make_EOC<Comparer_defs::winReportOut,winReportOutP>("comparer1")
 		};
     dynamic::modeling::ICs ics_TOP = {
         dynamic::translate::make_IC<iestream_input_defs<PlayGame_t>::out,Comparer_defs::playGameStartIn>("input_reader_play_game","comparer1"),
-        dynamic::translate::make_IC<Comparer_defs::playGameOut1,Player_defs::playGameIn>("comparer1","Player1"),
-        dynamic::translate::make_IC<Comparer_defs::playGameOut2,Player_defs::playGameIn>("comparer1","Player2")
-        /*dynamic::translate::make_IC<Player_defs::gameActionOut,Comparer_defs::gameActionIn1>("Player1","comparer1"),
-        dynamic::translate::make_IC<Player_defs::gameActionOut,Comparer_defs::gameActionIn2>("Player2","comparer1")
-        */
+        dynamic::translate::make_IC<Comparer_defs::playGameOut1,Player1_defs::playGameIn>("comparer1","Player1"),
+        dynamic::translate::make_IC<Comparer_defs::playGameOut2,Player2_defs::playGameIn>("comparer1","Player2"),
+        dynamic::translate::make_IC<Player1_defs::gameActionOut,Comparer_defs::gameActionIn1>("Player1","comparer1"),
+        dynamic::translate::make_IC<Player2_defs::gameActionOut,Comparer_defs::gameActionIn2>("Player2","comparer1")
+        
     };
     shared_ptr<dynamic::modeling::coupled<TIME>> TOP;
 
@@ -105,6 +108,6 @@ int main(){
 
     /************** Runner call ************************/ 
     dynamic::engine::runner<NDTime, logger_top> r(TOP,{0});
-    r.run_until(NDTime("01:00:00:000"));
+    r.run_until(NDTime("00:10:00:000"));
     return 0;
 }

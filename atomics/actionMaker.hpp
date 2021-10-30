@@ -14,8 +14,10 @@
 
 #include <limits>
 #include <assert.h>
+#include <time.h>
 #include <string>
 #include <random>
+#include <ctime>
 
 #include "../data_structures/playGame.hpp"
 #include "../data_structures/gameOption.hpp"
@@ -39,18 +41,20 @@ class ActionMaker{
     struct state_type{
         bool active; //triggered to true when playGameIn received
         int choice;
+        int seed; //used to generate random number by player
     }; 
     state_type state;    
     // default constructor
     ActionMaker() {
         state.active = false; // set to true once game request received
         state.choice = -1; //default is -1, means no choice, otherwise 1-3
+        state.seed;
     }     
     // internal transition
     void internal_transition() {
-        if (state.active == true && state.choice == -1) {
-            state.choice = 1 + (rand() % 3); //generate value between 1-3
-        }
+        state.active = false;
+        state.choice = -1;
+        state.seed = 0;
  
     }
     // external transition
@@ -61,6 +65,12 @@ class ActionMaker{
         else {
             if (state.active == false) {
                 state.active = true;
+                std::random_device rd;
+                std::mt19937 gen(rd());
+                std::uniform_int_distribution<> dis(1, 3);
+                state.choice = dis(gen); //generate value between 1-3
+
+                
             }
         }
     }
@@ -77,10 +87,9 @@ class ActionMaker{
 
             //output choice
             gameChoice.push_back(state.choice);
-
             get_messages<typename ActionMaker_defs::gameActionOut>(bags) = gameChoice;
-            return bags;
         }
+        return bags;
         
     }
     // time_advance function
@@ -95,7 +104,7 @@ class ActionMaker{
     }
 
     friend ostringstream& operator<<(ostringstream& os, const typename ActionMaker<TIME>::state_type& i) {
-        os << "Active? : " << i.active << " & Choice: "<<i.choice;
+        os << "Active? : " << i.active;
         return os;
     }
 };    

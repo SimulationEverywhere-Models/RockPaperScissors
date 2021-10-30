@@ -10,11 +10,11 @@ using namespace std;
 /*******************************************/
 /**************** PlayGame_t ****************/
 /*******************************************/
-struct PlayGame_t{
-  PlayGame_t(){}
-  PlayGame_t(bool i_isTriggerGame)
-   :isTriggerGame(i_isTriggerGame){}
-  	bool isTriggerGame;
+struct PlayGame_t {
+    PlayGame_t() {}
+    PlayGame_t(bool i_isTriggerGame)
+        :isTriggerGame(i_isTriggerGame) {}
+    bool isTriggerGame;
 };
 
 istream& operator>> (istream& is, PlayGame_t& msg);
