@@ -40,21 +40,18 @@ class ActionMaker{
     // state definition
     struct state_type{
         bool active; //triggered to true when playGameIn received
-        int choice;
-        int seed; //used to generate random number by player
+        int choice; //player choice
     }; 
     state_type state;    
     // default constructor
     ActionMaker() {
         state.active = false; // set to true once game request received
         state.choice = -1; //default is -1, means no choice, otherwise 1-3
-        state.seed;
     }     
     // internal transition
     void internal_transition() {
         state.active = false;
         state.choice = -1;
-        state.seed = 0;
  
     }
     // external transition
@@ -65,10 +62,10 @@ class ActionMaker{
         else {
             if (state.active == false) {
                 state.active = true;
-                std::random_device rd;
-                std::mt19937 gen(rd());
-                std::uniform_int_distribution<> dis(1, 3);
-                state.choice = dis(gen); //generate value between 1-3
+                std::random_device rand;
+                std::mt19937 generate(rand());
+                std::uniform_int_distribution<> distribute(1, 3);
+                state.choice = distribute(generate); //generate value between 1-3
 
                 
             }
@@ -89,8 +86,7 @@ class ActionMaker{
             gameChoice.push_back(state.choice);
             get_messages<typename ActionMaker_defs::gameActionOut>(bags) = gameChoice;
         }
-        return bags;
-        
+        return bags; 
     }
     // time_advance function
     TIME time_advance() const {

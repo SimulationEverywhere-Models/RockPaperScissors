@@ -2,49 +2,69 @@
 State for model input_reader_play_game is next time: 00:00:00:000
 State for model input_reader_player1_choice is next time: 00:00:00:000
 State for model input_reader_player2_choice is next time: 00:00:00:000
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 0 Current round leader is: 0
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
 00:00:00:000
 State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: 00:00:30:000
-State for model input_reader_player2_choice is next time: 00:00:30:000
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 0 Current round leader is: 0
-00:00:30:000
-State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 1 & Response from P1 : 1 & Response from P2 : 2 & winner is player : -1 Current round leader is: -1
-00:00:45:000
-State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 2 Current round leader is: 2
+State for model input_reader_player1_choice is next time: 00:02:28:000
+State for model input_reader_player2_choice is next time: 00:02:28:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
 00:02:00:000
 State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: -1
+State for model input_reader_player1_choice is next time: 00:02:28:000
+State for model input_reader_player2_choice is next time: 00:02:28:000
+State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
 00:02:05:000
 State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 2
+State for model input_reader_player1_choice is next time: 00:02:28:000
+State for model input_reader_player2_choice is next time: 00:02:28:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
+00:02:28:000
+State for model input_reader_play_game is next time: 00:02:00:000
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 1 & Response from P1 : 1 & Response from P2 : 1 & winner is player : -1 Current round leader is: 0
+00:02:43:000
+State for model input_reader_play_game is next time: 00:02:00:000
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 0 Current round leader is: 0
 00:04:00:000
 State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: -1
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
 00:04:05:000
 State for model input_reader_play_game is next time: 00:02:00:000
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 2
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 0
+00:04:28:000
+State for model input_reader_play_game is next time: 00:02:00:000
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 1 & Response from P1 : 2 & Response from P2 : 3 & winner is player : -1 Current round leader is: 0
+00:04:43:000
+State for model input_reader_play_game is next time: 00:02:00:000
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 2 Current round leader is: 2
 00:06:00:000
 State for model input_reader_play_game is next time: inf
-State for model input_reader_player1_choice is next time: inf
-State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: -1
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 1 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 2
 00:06:05:000
+State for model input_reader_play_game is next time: inf
+State for model input_reader_player1_choice is next time: 00:02:00:000
+State for model input_reader_player2_choice is next time: 00:02:00:000
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 2
+00:06:28:000
 State for model input_reader_play_game is next time: inf
 State for model input_reader_player1_choice is next time: inf
 State for model input_reader_player2_choice is next time: inf
-State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : -1 Current round leader is: 2
+State for model comparer1 is Active? : 1 & Response from P1 : 3 & Response from P2 : 2 & winner is player : -1 Current round leader is: 2
+00:06:43:000
+State for model input_reader_play_game is next time: inf
+State for model input_reader_player1_choice is next time: inf
+State for model input_reader_player2_choice is next time: inf
+State for model comparer1 is Active? : 0 & Response from P1 : -1 & Response from P2 : -1 & winner is player : 1 Current round leader is: 0

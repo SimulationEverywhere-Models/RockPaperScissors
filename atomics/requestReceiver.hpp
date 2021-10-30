@@ -38,14 +38,12 @@ class RequestReceiver{
     struct state_type{
         bool active; //triggered to true when playGameStartIn received
         bool sent; //triggered to true when command sent to actionMaker to prepare command 
-        int seed;
     }; 
     state_type state;    
     // default constructor
     RequestReceiver() {
         state.active = false; //true if game request from Comparer has been received
         state.sent = false; // true if game request has been sent from RequestReceiver to ActionMaker
-        state.seed = 0;
     }    
     // internal transition
     void internal_transition() {

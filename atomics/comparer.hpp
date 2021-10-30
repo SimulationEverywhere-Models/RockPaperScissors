@@ -49,9 +49,9 @@ class Comparer{
         bool received2; //triggered to true when player2 sends back response
         int playerIDWin; //the ID of the player that won the match
         vector <int> winnerTracker; //tracks the scores of the past rounds
-        int leading;
-        int leadingDisplay; //just to display in log
-        int playerIDDisplay; //just to display in log
+        int leading; //tracks which player has one more games in the total rounds played
+        int leadingDisplay; //just to display in log, not really a state variable
+        int playerIDDisplay; //just to display in log, not really a state variable
     }; 
     state_type state;    
     // default constructor
@@ -62,10 +62,10 @@ class Comparer{
         state.received1 = false; //set to true when plyer response received
         state.received2 = false; //set to true when plyer response received
         state.playerIDWin = -1; //no winner selected yet
-        state.winnerTracker;
-        state.leading=0;
+        state.winnerTracker; //tracks the scores of the past rounds
+        state.leading=0; //tracks which player has one more games in the total rounds played
         state.leadingDisplay=0;
-        state.playerIDDisplay=0;
+        state.playerIDDisplay=-1;
     }     
     // internal transition
     //1-rock, 2- paper, 3 -scissors
@@ -78,10 +78,7 @@ class Comparer{
         state.received2 = false;
         state.playerIDWin = -1; 
         state.playerResult1 = -1;
-        state.playerResult2 = -1;
-        
-
-            
+        state.playerResult2 = -1;   
         
     }
     // external transition
@@ -171,7 +168,6 @@ class Comparer{
         }
 
         state.playerIDDisplay = -1;
-        state.leadingDisplay = -1;
 
 
     }

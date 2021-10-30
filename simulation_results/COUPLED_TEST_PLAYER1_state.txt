@@ -3,54 +3,42 @@ State for model input_reader is next time: 00:00:00:000
 State for model requestReceiver1 is Active? : 0 Sent? :0
 State for model actionMaker1 is Active? : 0
 00:00:00:000
-State for model input_reader is next time: 00:00:00:000
+State for model input_reader is next time: 00:02:00:000
 State for model requestReceiver1 is Active? : 0 Sent? :0
 State for model actionMaker1 is Active? : 0
-00:00:00:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 1 Sent? :0
-State for model actionMaker1 is Active? : 0
-00:00:20:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 0 Sent? :1
-State for model actionMaker1 is Active? : 1
-00:00:23:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 0 Sent? :1
-State for model actionMaker1 is Active? : 0
-00:01:00:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 1 Sent? :0
-State for model actionMaker1 is Active? : 0
-00:01:20:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 0 Sent? :1
-State for model actionMaker1 is Active? : 1
-00:01:23:000
-State for model input_reader is next time: 00:01:00:000
-State for model requestReceiver1 is Active? : 0 Sent? :1
-State for model actionMaker1 is Active? : 0
 00:02:00:000
-State for model input_reader is next time: 00:01:00:000
+State for model input_reader is next time: 00:02:00:000
 State for model requestReceiver1 is Active? : 1 Sent? :0
 State for model actionMaker1 is Active? : 0
 00:02:20:000
-State for model input_reader is next time: 00:01:00:000
+State for model input_reader is next time: 00:02:00:000
 State for model requestReceiver1 is Active? : 0 Sent? :1
 State for model actionMaker1 is Active? : 1
 00:02:23:000
-State for model input_reader is next time: 00:01:00:000
+State for model input_reader is next time: 00:02:00:000
 State for model requestReceiver1 is Active? : 0 Sent? :1
 State for model actionMaker1 is Active? : 0
-00:03:00:000
+00:04:00:000
+State for model input_reader is next time: 00:02:00:000
+State for model requestReceiver1 is Active? : 1 Sent? :0
+State for model actionMaker1 is Active? : 0
+00:04:20:000
+State for model input_reader is next time: 00:02:00:000
+State for model requestReceiver1 is Active? : 0 Sent? :1
+State for model actionMaker1 is Active? : 1
+00:04:23:000
+State for model input_reader is next time: 00:02:00:000
+State for model requestReceiver1 is Active? : 0 Sent? :1
+State for model actionMaker1 is Active? : 0
+00:06:00:000
 State for model input_reader is next time: inf
 State for model requestReceiver1 is Active? : 1 Sent? :0
 State for model actionMaker1 is Active? : 0
-00:03:20:000
+00:06:20:000
 State for model input_reader is next time: inf
 State for model requestReceiver1 is Active? : 0 Sent? :1
 State for model actionMaker1 is Active? : 1
-00:03:23:000
+00:06:23:000
 State for model input_reader is next time: inf
 State for model requestReceiver1 is Active? : 0 Sent? :1
 State for model actionMaker1 is Active? : 0
