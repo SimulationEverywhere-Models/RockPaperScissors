@@ -152,12 +152,10 @@ class Comparer{
             for (int i : state.winnerTracker) {
                 if (i == 1) {
                     player1Counter++;
-
                 }
                 if (i == 2) {
                     player2Counter++;
                 }
-                std::cout << i;
             }
             if (player1Counter > player2Counter) {
                 state.leading = 1;

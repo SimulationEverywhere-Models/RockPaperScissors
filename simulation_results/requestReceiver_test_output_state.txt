@@ -1,0 +1,12 @@
+00:00:00:000
+State for model input_reader is next time: 00:00:00:000
+State for model requestReceiver1 is Active? : 0 Sent? :0
+00:00:00:000
+State for model input_reader is next time: 00:00:00:000
+State for model requestReceiver1 is Active? : 0 Sent? :0
+00:00:00:000
+State for model input_reader is next time: 00:01:00:000
+State for model requestReceiver1 is Active? : 1 Sent? :0
+00:00:20:000
+State for model input_reader is next time: 00:01:00:000
+State for model requestReceiver1 is Active? : 0 Sent? :1

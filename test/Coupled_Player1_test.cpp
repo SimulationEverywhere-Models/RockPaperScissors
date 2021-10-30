@@ -63,7 +63,7 @@ int main(){
     dynamic::modeling::Models submodels_TOP = {input_reader,Player1};
     dynamic::modeling::EICs eics_TOP = {};
     dynamic::modeling::EOCs eocs_TOP = {
-        dynamic::translate::make_EOC<Player_defs::gameActionOut,top_out>("Player1")
+        dynamic::translate::make_EOC<Player1_defs::gameActionOut,top_out>("Player1")
 		};
     dynamic::modeling::ICs ics_TOP = {
         dynamic::translate::make_IC<iestream_input_defs<PlayGame_t>::out,Player1_defs::playGameIn>("input_reader","Player1")
@@ -73,13 +73,13 @@ int main(){
     TOP = make_shared<dynamic::modeling::coupled<TIME>>("TOP", submodels_TOP, iports_TOP, oports_TOP, eics_TOP, eocs_TOP, ics_TOP);
 
     /*************** Loggers *******************/
-    static ofstream out_messages("../simulation_results/COUPLED_TEST_PLAYER_outputs.txt");
+    static ofstream out_messages("../simulation_results/COUPLED_TEST_PLAYER1_outputs.txt");
     struct oss_sink_messages{
         static ostream& sink(){          
             return out_messages;
         }
     };
-    static ofstream out_state("../simulation_results/COUPLED_TEST_PLAYER_state.txt");
+    static ofstream out_state("../simulation_results/COUPLED_TEST_PLAYER1_state.txt");
     struct oss_sink_state{
         static ostream& sink(){          
             return out_state;
