@@ -96,4 +96,4 @@ cadmiumRPS_Simulation
 	
 5 - Note: RPS_SIMULATION.EXE is the main simulation, the rest are self-explanatory by their names, and only represent a specific model
 
-6 - To change any of the tests, and to alter the input date, simply change the associated file in /input_data
+6 - To change any of the tests, and to alter the input data, simply change the associated file in /input_data

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models>
+	<Model name="Player1" type="coupled" description="a coupled model representing the first player in the rock, paper, scissors game">
+		<Inputs>
+			<Port name="playGameIn" type="message" description="trigger to alert the player that the game has started"/>	
+			</Inputs>
+		<Outputs>
+			<Port name="gameActionOut" type="message" description="choice output from the player, either rock-1, or paper-2, or scissors-3"/>
+		</Outputs>
+		<Files>	
+			<File name="Player1.cpp" type="CPP" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Player2" type="coupled" description="a coupled model representing the second player in the rock, paper, scissors game">
+		<Inputs>
+			<Port name="playGameIn" type="message" description="trigger to alert the player that the game has started"/>
+		</Inputs>
+		<Outputs>
+			<Port name="gameActionOut" type="message" description="choice output from the player, either rock-1, or paper-2, or scissors-3"/>
+		</Outputs>
+		<Files>
+			<File name="Player2.cpp" type="CPP" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Comparer" type="atomic" description="an atomic model to initiate the players, as well as judge the victor based on the players' input">
+		<Inputs>
+			<Port name="playGameStartIn" type="message" description="trigger to alert the comparer that the game has started"/>
+			<Port name="gameActionIn1" type="message" description="choice response from Player1"/>
+			<Port name="gameActionIn2" type="message" description="choice response from Player2"/>
+		</Inputs>
+		<Outputs>
+			<Port name="playGameOut1" type="message" description="trigger to alert the first player, that the game has started"/>
+			<Port name="playGameOut2" type="message" description="trigger to alert the second player, that the game has started"/>
+			<Port name="winReportOut" type="message" description="ID of the player that won the match"/>
+		</Outputs>
+		<Files>
+			<File name="comparer.hpp" type="HPP" location="/"/>
+		</Files>
+	</Model>
+	<Model name="RequestReceiver" type="atomic" description="imitates the human action of thinking/pondering, will wait 20s before alerting ActionMaker to provide output">
+		<Inputs>
+			<Port name="playGameIn" type="message" description="trigger to alert RequestReceiver to set itself to active"/>			
+		</Inputs>
+		<Outputs>
+			<Port name="playGameOut" type="message" description="trigger to alert ActionMaker to have a decision ready"/>
+		</Outputs>
+		<Files>
+			<File name="requestReceiver.hpp" type="HPP" location="/"/>
+		</Files>
+	</Model>
+	<Model name="ActionMaker" type="atomic" description="model that makes the decision for the player and outputs it back to Comparer">
+		<Inputs>
+			<Port name="playGameIn" type="message" description="triggers ActionMaker to active, so it can have a response ready in 3s"/>			
+		</Inputs>
+		<Outputs>
+			<Port name="gameActionOut" type="message" description="Choice of response to send back to Comparer"/>
+		</Outputs>
+		<Files>
+			<File name="actionMaker.hpp" type="HPP" location="/"/>
+		</Files>
+	</Model>
+</Models>
