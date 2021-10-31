@@ -6,7 +6,8 @@ This folder contains the ROCK PAPER SCISSORS DEVS model implemented in Cadmium
 
 README.txt
 
-cadmiumRPS_Simulation
+
+CadmiumRockPaperScissorsSimulation-main
 │   .gitignore
 │   Assignment1_RPS_Simulation_Cadmium.pdf
 │   Assignment1_RPS_Simulation_Cadmium.doc
