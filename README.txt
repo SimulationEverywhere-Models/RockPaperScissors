@@ -8,8 +8,10 @@ README.txt
 
 cadmiumRPS_Simulation
 │   .gitignore
-│   Assignment1.docx
+│   Assignment1.pdf
 │   makefile
+│   ModelDescription-rps_cadmium.xml
+│   RPS_Overview_Form.doc
 │   
 ├───atomics [Contains all atomic models required for simulation]
 │       actionMaker.hpp
