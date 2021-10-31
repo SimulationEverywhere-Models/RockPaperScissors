@@ -9,6 +9,7 @@ README.txt
 cadmiumRPS_Simulation
 │   .gitignore
 │   Assignment1.pdf
+│   Assignment1.doc
 │   makefile
 │   ModelDescription-rps_cadmium.xml
 │   RPS_Overview_Form.doc
@@ -88,7 +89,7 @@ cadmiumRPS_Simulation
 1 - A brief overview of this simulation and model can be found in RPS_Overview_Form.doc
 
 2 - To compile all tests and simulations, follow the steps below
-	1 - Start a new Linux terminal (Ubuntu) or Cygwin terminal (Windows) at ../CadmiumRockPaperScissorsSimulation
+	1 - Start a new Linux terminal (Ubuntu) or Cygwin terminal (Windows) at ../CadmiumRockPaperScissorsSimulation-main
 	2 - Running the commands below will clean all script, bin, and build files, and then remake the bin and build files
 			make clean; make all
 			
