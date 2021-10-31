@@ -8,8 +8,8 @@ README.txt
 
 cadmiumRPS_Simulation
 │   .gitignore
-│   Assignment1.pdf
-│   Assignment1.doc
+│   Assignment1_RPS_Simulation_Cadmium.pdf
+│   Assignment1_RPS_Simulation_Cadmium.doc
 │   makefile
 │   ModelDescription-rps_cadmium.xml
 │   RPS_Overview_Form.doc
@@ -84,7 +84,7 @@ cadmiumRPS_Simulation
 /****STEPS****/
 /*************/
 
-0 - Clone or download a .zip of this repository from :https://github.com/muhammadbsalman/CadmiumRockPaperScissorsSimulation
+0 - Clone or download a .zip of this repository from: https://github.com/muhammadbsalman/CadmiumRockPaperScissorsSimulation
 
 1 - A brief overview of this simulation and model can be found in RPS_Overview_Form.doc
 
