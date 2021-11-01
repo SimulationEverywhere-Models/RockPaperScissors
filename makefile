@@ -52,4 +52,4 @@ all: rps_simulation tests
 
 #CLEAN COMMANDS
 clean:
-	rm -f bin/* build/* simulation_results/*
+	rm -f bin/* build/*
