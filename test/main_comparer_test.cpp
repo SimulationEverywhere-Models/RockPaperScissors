@@ -27,10 +27,8 @@ using namespace cadmium::basic_models::pdevs;
 
 using TIME = NDTime;
 
-/***** Define input port for coupled models *****
-struct gameActionIn1 : public in_port<GameAction_t> {};
-struct gameActionIn2 : public in_port<GameAction_t> {};
-struct playGameStartIn : public in_port<PlayGame_t> {};*/
+/***** Define input port for coupled models *****/
+//not needed here, since we are loading input data
 
 /***** Define output ports for coupled model *****/
 struct playGameOut1P : public out_port<PlayGame_t> {};

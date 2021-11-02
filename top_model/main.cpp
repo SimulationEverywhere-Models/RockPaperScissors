@@ -36,6 +36,7 @@ using namespace cadmium::basic_models::pdevs;
 using TIME = NDTime;
 
 /***** Define input port for coupled models *****/
+//not needed here, since we are loading input data
 
 /***** Define output ports for coupled model *****/
 struct winReportOutP : public out_port<WinReport_t> {};

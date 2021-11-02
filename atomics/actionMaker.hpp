@@ -3,7 +3,7 @@
 * SYSC5104F - Carleton University
 *
 * Request Receiver:
-* Cadmium implementation of CD++ Request Receiver atomic model
+* Cadmium implementation of CD++ ActionMaker atomic model
 */
 
 #ifndef _ACTIONMAKER_HPP__
@@ -104,4 +104,4 @@ class ActionMaker{
         return os;
     }
 };    
-#endif // _REQUESTRECEIVER_HPP__
+#endif // _ACTIONMAKER_HPP__
